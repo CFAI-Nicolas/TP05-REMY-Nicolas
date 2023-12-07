@@ -1,0 +1,23 @@
+<h1>Archi Web - Connexion backend</h1>
+<label for="login">login : </label><input [(ngModel)]="login" /><br />
+<label for="password">password : </label
+><input [(ngModel)]="password" type="password" /><br />
+<br />
+<button (click)="connexion()">Connexion</button>
+
+<hr />
+<div *ngIf="cnx">
+  Bonjour {{ nom }} - {{ prenom }}
+
+  <h2>Catalogue produits</h2>
+
+  <div *ngIf="produits$ | async as produits">
+    <div *ngFor="let p of produits">
+      <div>{{ p.ref }} - {{ p.titre }} - {{ p.prix }} €</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="erreurAuthentification">
+  <p>Erreur d'authentification. Vérifiez votre login et votre mot de passe.</p>
+</div>
